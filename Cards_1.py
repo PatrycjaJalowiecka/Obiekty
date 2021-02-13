@@ -14,7 +14,9 @@ fake = Faker('pl_PL')
 
 fake.name()
 fake.company()
-fake.zip_code()
-
-for _ in range(10):
-  print(fake.name(), ",", fake.company(),  ",", fake.zip_code())
+fake.address()
+fake.phone_number()
+fake.job()
+ 
+for _ in range(20):
+  print(fake.name(), ",", fake.company(), ",", fake.job(),  ",", fake.address(), "," , fake.phone_number())
