@@ -1,3 +1,13 @@
+from faker import Faker
+fake = Faker('pl_PL')
+
+fake.first_name()
+fake.last_name()
+fake.company()
+fake.job()
+fake.phone_number()
+fake.email()
+
 class Card:
     card_list = []
 
@@ -13,12 +23,10 @@ class Card:
     def create_contacts(type, quantity):
         random_Basecard = []
         random_Businesscard = []   
-        from faker import Faker
-        fake = Faker('pl_PL')
-
+        
         if type == "Base":
             for card in range(quantity):
-                random_Basecard.append(Card(name=fake.first_name(), surname=fake.last_name, company=fake.company(), occupation=fake.job(), phone=fake.phone_number(), b_phone=fake.phone(), e_mail=fake.email()))
+                random_Basecard.append(Card(name=fake.first_name(), surname=fake.last_name, company=fake.company(), occupation=fake.job(), phone=fake.phone_number(), b_phone=fake.phone_number(), e_mail=fake.email()))
                 return random_Basecard
         elif type == "Business":
             for card in range(quantity):

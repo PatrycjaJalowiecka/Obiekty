@@ -10,8 +10,9 @@ class Card:
         self.card_list.append(self)
 
     def __str__(self):
-        return f' {self.name} {self.surname} {self.company} {self.occupation} {self.e_mail}' 
-      
+        newline = '\n'
+        return f' {self.name} {self.surname}, {self.company}, {self.occupation}, {self.e_mail} {newline}'
+
     def __repr__(self):
         return f' {self.name} {self.surname} {self.company} {self.occupation} {self.e_mail}'
 
@@ -21,7 +22,6 @@ card3 = Card(name = "Wisław", surname = "Piotrowski", company = "LoRay", occupa
 card4 = Card(name = "Jarogniew", surname = "Wieczorek", company = "Sound Warehouse", occupation = "Taper", e_mail = "JarogniewWieczorek@armyspy.com")
 card5 = Card(name = "Bogumiła", surname = "Sawicka", company = "Blockbuster Music", occupation = "health inspector", e_mail = "BogumilaSawicka@armyspy.com")
 cards = [card1, card2, card3, card4, card5]
-print(cards)
- 
-for card in Card.card_list:
-    print(card.name, card.surname, "," ,card.company, "," ,card.occupation, "," ,card.e_mail)
+##print(cards)
+
+print(card1, card2, card3, card4, card5) 
