@@ -16,9 +16,11 @@ class Card:
         self.surname = surname
         self.company = company
         self.occupation = occupation
+        self.phone = phone
+        self.b_phone = b_phone
         self.e_mail = e_mail
         self.card_list.append(self)
-        self.label_lenght = (len(self.name) + len(self.surname) + 1)
+
 
     def create_contacts(type, quantity):
         random_Basecard = []
@@ -35,14 +37,16 @@ class Card:
         else:
             print("Invalid type")
 
-    create_contacts("Base", 10)
-
+print(Card.create_contacts("Base", 10))
+print(random_Basecard)
 
 class Basecontact(Card):
     basecontact_list = []
 
     def __init__(self, name, surname, phone, e_mail):
         super().__init__(name, surname, phone, e_mail)
+        self.label_val = (len(self.name) + len(self.surname) + 1)
+        self.basecontact_list.append(self)
 
     def __str__(self):
         return f' {self.name} {self.surname} {self.e_mail}'
@@ -55,17 +59,21 @@ class Basecontact(Card):
 
     @property
     def label_lenght(self):
-        return self.label_lenght
+        return self.label_val
 
     ##for basecard in Basecontact.basecontact_list:
     ##  print (basecard.name, basecard.surname, buasecard.label_lenght)
 
+##create_contacts("Base",10)
+##print(basecontact_list)
 
-class Businesscontact(Card, Basecontact):
+class Businesscontact(Card):
     businesscontact_list = []
 
     def __init__(self, name, surname, company, occupation, b_phone):
         super().__init__(name, surname, company, occupation, b_phone)
+        self.label_val = (len(self.name) + len(self.surname) + 1)
+        self.businesscontact_list.append(self)
 
     def __str__(self):
         return f' {self.name} {self.surname} {self.e_mail}'
@@ -78,7 +86,7 @@ class Businesscontact(Card, Basecontact):
 
     @property
     def label_lenght(self):
-        return self.label_lenght
+        return self.label_val
 
     ##for businesscard in Businesscontact.businesscontact_list:
     ##  print (businesscard.name, businesscard.surname, businesscard.label_lenght)
