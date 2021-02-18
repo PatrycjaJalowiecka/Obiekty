@@ -22,29 +22,13 @@ class Card:
         self.card_list.append(self)
 
 
-    def create_contacts(type, quantity):
-        random_Basecard = []
-        random_Businesscard = []   
-        
-        if type == "Base":
-            for card in range(quantity):
-                random_Basecard.append(Card(name=fake.first_name(), surname=fake.last_name, company=fake.company(), occupation=fake.job(), phone=fake.phone_number(), b_phone=fake.phone_number(), e_mail=fake.email()))
-                return random_Basecard
-        elif type == "Business":
-            for card in range(quantity):
-                random_Businesscard.append(Card(name=fake.name(), company=fake.company(), occupation=fake.job(), phone=fake.phone_number(), e_mail=fake.email()))
-                return random_Businesscard
-        else:
-            print("Invalid type")
-
-print(Card.create_contacts("Base", 10))
-print(random_Basecard)
+##print("")
 
 class Basecontact(Card):
     basecontact_list = []
 
-    def __init__(self, name, surname, phone, e_mail):
-        super().__init__(name, surname, phone, e_mail)
+    def __init__(self, name, surname, phone, e_mail, b_phone, e_mail):
+        super().__init__(self, name, surname, phone, e_mail, b_phone, e_mail)
         self.label_val = (len(self.name) + len(self.surname) + 1)
         self.basecontact_list.append(self)
 
@@ -70,8 +54,8 @@ class Basecontact(Card):
 class Businesscontact(Card):
     businesscontact_list = []
 
-    def __init__(self, name, surname, company, occupation, b_phone):
-        super().__init__(name, surname, company, occupation, b_phone)
+    def __init__(self, name, surname, company, occupation, b_phone, e_mail):
+        super().__init__(self, name, surname, company, occupation, b_phone, e_mail)
         self.label_val = (len(self.name) + len(self.surname) + 1)
         self.businesscontact_list.append(self)
 
@@ -90,3 +74,18 @@ class Businesscontact(Card):
 
     ##for businesscard in Businesscontact.businesscontact_list:
     ##  print (businesscard.name, businesscard.surname, businesscard.label_lenght)
+
+def create_contacts(type, quantity):
+    random_card = []
+        
+    if type == "Base":
+        for _ in range(quantity):
+            random_card.append(Basecontact(name=fake.first_name(), surname=fake.last_name, phone=fake.phone_number(), e_mail=fake.email()))
+    elif type == "Business":
+        for _ in range(quantity):
+            random_card.append(Businesscontact(name=fake.first_name(), surname=fake.last_name, company=fake.company(), occupation=fake.job(), b_phone=fake.phone_number(), e_mail=fake.email()))
+    else:
+        print("Invalid type")
+    return random_card
+
+create_contacts("Base", 10)
